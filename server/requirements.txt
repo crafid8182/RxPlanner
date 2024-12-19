@@ -1,0 +1,11 @@
+pandas
+numpy
+flask
+openai
+python-dotenv
+requests
+pytesseract
+opencv-python
+icalendar
+datetime
+pathlib
