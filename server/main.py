@@ -6,6 +6,9 @@ from friendly_reminder import reminder
 app = Flask(__name__)
 CORS(app)
 
+
+
+
 @app.route('/api/submit', methods=['POST'])
 def get_details():
     data = request.get_json()
@@ -19,14 +22,19 @@ def get_details():
 
     #print(name, age, height, weight, ethnicity)
 
-    response = reminder(name, ethnicity, age, height, weight)
+    message = reminder(name, ethnicity, age, height, weight)
+    print(message)
 
 
 
     return jsonify({
         "message": "Data received successfully",
-        "received_data": data
+        "received_data": data,
+        "advisory": message
     }), 200
+
+
+
 
 
 if __name__ == '__main__':

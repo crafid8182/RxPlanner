@@ -1,7 +1,13 @@
 import { useState } from "react";
 import "./Start.css";
+import { useNavigate } from "react-router-dom";
 
 const Start = () => {
+
+    const navigate = useNavigate();
+    const handleNavigate = () => {
+        navigate("/Home", {state: details});
+    };
 
     const [details, setDetails] = useState({
         name: "",
@@ -26,7 +32,11 @@ const Start = () => {
             method: 'POST',
             headers: {"Content-Type": "application/json"},
             body: JSON.stringify(details)
-        })
+        }).then(response => response.json()).then(data => {
+            navigate("/Home", {state: data});
+        });
+
+        //handleNavigate();
 
     }
 

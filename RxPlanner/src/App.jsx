@@ -6,6 +6,7 @@ import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
 import Head from "./components/Head.jsx";
 import Main from "./components/Main.jsx";
 import Start from "./components/Start.jsx";
+import Prescription from "./components/Prescription.jsx";
 
 
 
@@ -23,6 +24,8 @@ function App() {
 
         <Route path="/" element={<Main />} />
         <Route path="/start" element={<Start />} />
+        <Route path="/home" element={<Prescription />} />
+        
 
         </Routes>
       </Router>

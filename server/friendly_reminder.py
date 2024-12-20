@@ -17,7 +17,7 @@ def reminder(name, ethnicity, age, height, weight):
                 predisposed to. Keep the message friendly and short enough to 
                 fit a subheader.
 
-                1. Start the message with 'Hey{name}! ' then something friendly or motivating similar to 'Empower your health: '
+                1. Start the message with 'Hey {name}, ' then something friendly or motivating similar to 'Empower your health! '
                 2. The message should be short and concise. About 2 sentences.
                 3. The point is to mke the patient aware of hereditary risks that come with the ethnicity
                 
