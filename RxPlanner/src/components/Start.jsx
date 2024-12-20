@@ -9,6 +9,7 @@ const Start = () => {
         navigate("/Home", {state: details});
     };
 
+    //populates a JSON file with all necessary user data
     const [details, setDetails] = useState({
         name: "",
         age: "",
@@ -24,6 +25,8 @@ const Start = () => {
         })
     }
 
+
+    //sends POST API to backend with user data
     const handleSubmit = async (event) => {
         event.preventDefault();
         console.log(details);
@@ -36,7 +39,6 @@ const Start = () => {
             navigate("/Home", {state: data});
         });
 
-        //handleNavigate();
 
     }
 

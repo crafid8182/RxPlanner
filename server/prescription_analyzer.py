@@ -10,12 +10,13 @@ import pytz
 from dotenv import load_dotenv
 from openai import OpenAI
 
+# enables server to access environment variables
 load_dotenv('server/.env')
 
 OPENAI_KEY = os.getenv('OPENAI_API_KEY')
 ROOT_DIREC = os.getenv('ROOT_DIREC')
 
-# takes preprocess img
+# takes preprocess RAW img
 def process_img(img):
 
     #convert to greyscale
@@ -50,6 +51,7 @@ def gpt_parser(s):
         api_key=OPENAI_KEY
     )
 
+    # ask openai to take the OCR string and make sense of it
     prompt = f"""
             I did OCR on the following prescription: {s} \n\n
             Within this text, there is information about the medication, dosage, time, and refill date.
@@ -99,11 +101,12 @@ def set_recurrence_rule(event, dosage, refill_date):
 
 # def pass string in gpt api and ask it to generate ical details
 
+# create ical file and save
 def generate_ical(formatted_string):
     cal = Calendar()
     event = Event()
 
-    # format: Metformin HCL 750 mg | 1 D | 0900 | 06/21/2024
+    # example format: Metformin HCL 750 mg | 1 D | 0900 | 06/21/2024
     string_split = [s.strip() for s in formatted_string.split('|', 3)]
     medicine = string_split[0]
     dosage = string_split[1]
@@ -139,6 +142,7 @@ def generate_ical(formatted_string):
     with open(ics_path, 'wb') as f:
         f.write(cal.to_ical())
 
+    # return path to the generated ical file to main.py
     return local_path
 
 

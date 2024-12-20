@@ -19,6 +19,7 @@ function App() {
       <Head />
 
 
+      {/* Routing different components based on path */}
       <Router>
         <Routes>
 

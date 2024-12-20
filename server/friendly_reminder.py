@@ -2,7 +2,7 @@ from openai import OpenAI
 from dotenv import load_dotenv
 import os
 
-
+#enables server to access environment variables
 load_dotenv()
 OPENAI_KEY = os.getenv('OPENAI_API_KEY')
 
@@ -11,6 +11,8 @@ def reminder(name, ethnicity, age, height, weight):
         api_key=OPENAI_KEY
     )
 
+    #sends prompt based on user data from frontend to 
+    #advise patient for their next checkup
     prompt = f"""
                 What are some questions, a {weight}lbs {height} tall {age}year old {ethnicity} person should ask 
                 their doctors due to ethnicity based conditions that person may be 
@@ -23,7 +25,7 @@ def reminder(name, ethnicity, age, height, weight):
                 
             """
     
-    print(prompt)
+    #print(prompt)
     
     llm_response = client.chat.completions.create(
         model="gpt-4o-mini",
@@ -38,8 +40,11 @@ def reminder(name, ethnicity, age, height, weight):
 
 def main():
     #reminder('black', 21, 'M')
+
+    # print for debugging purposes 
+    # wont actually run unless $ python3 friendly_reminder.py
     print(reminder('bengali', 22, '67', '135'))
 
-
+# wont actually run unless $ python3 friendly_reminder.py
 if __name__ == '__main__':
     main()
