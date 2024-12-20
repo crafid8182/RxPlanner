@@ -22,27 +22,12 @@ const Start = () => {
         event.preventDefault();
         console.log(details);
 
-        try {
-            const response = await fetch("http://localhost:5000/api/submit", {
-                method: "POST",
-                headers: {
-                    "Content-Type": "application/json",
-                },
-                body: JSON.stringify(details), // Convert details to JSON
-            });
+        fetch('http://localhost:5001/api/submit', {
+            method: 'POST',
+            headers: {"Content-Type": "application/json"},
+            body: JSON.stringify(details)
+        })
 
-            if (response.ok) {
-                const data = await response.json();
-                console.log("Response from server:", data);
-                alert("Submission successful!");
-            } else {
-                console.error("Failed to submit:", response.statusText);
-                alert("Submission failed!");
-            }
-        } catch (error) {
-            console.error("Error:", error);
-            alert("An error occurred while submitting the data.");
-        }
     }
 
     return (
