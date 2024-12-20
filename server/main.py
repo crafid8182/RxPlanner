@@ -1,5 +1,5 @@
 import os
-from flask import Flask, request, jsonify
+from flask import Flask, request, jsonify, send_file
 from flask_cors import CORS
 from friendly_reminder import reminder
 from prescription_analyzer import main as analyzer_main
@@ -31,15 +31,12 @@ def analyze():
     file.save(filepath)
 
     # Pass the saved file to the analyzer
-    from prescription_analyzer import main as analyzer_main
     relative_path = f"/data/img/{file.filename}"  # Relative path for the analyzer
     ics_path = analyzer_main(relative_path)
 
     if ics_path:
-        return jsonify({
-            "message": "Image analyzed and ICS file generated",
-            "ics_path": ics_path
-        }), 200
+        full_ics_path = os.path.join("/Users/moeraff/Documents/Coding/rx-project", ics_path.lstrip('/'))
+        return send_file(full_ics_path, as_attachment=True, download_name=os.path.basename(ics_path))
     else:
         return jsonify({"error": "Error processing image"}), 500
 
