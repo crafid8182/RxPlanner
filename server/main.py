@@ -1,5 +1,6 @@
 from flask import Flask, request, jsonify
 from flask_cors import CORS
+from friendly_reminder import reminder
 
 
 app = Flask(__name__)
@@ -18,7 +19,9 @@ def get_details():
 
     #print(name, age, height, weight, ethnicity)
 
-    
+    response = reminder(name, ethnicity, age, height, weight)
+
+
 
     return jsonify({
         "message": "Data received successfully",

@@ -1,6 +1,7 @@
 pandas
 numpy
 flask
+flask-cors
 openai
 python-dotenv
 requests
