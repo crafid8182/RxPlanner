@@ -1,45 +1,44 @@
 import { useState } from "react";
+import "./Start.css";
 
-
-function Start() {
-
-    const [username, setUsername] = useState('');
-    const [password, setPassword] = useState('');
-
-    const handleUsernameChange = (e) => {
-        e.preventDefault();
-        
-        const response = fetch('http://localhost:3001/login', {
-            method: 'POST',
-            headers: {
-                'Content-Type': 'application/json'
-            },
-            body: JSON.stringify({username, password}),
-        });
-
-    };
-
+const Start = () => {
     return (
         <>
-            
-            <h1>Get started by filling out some basic information!</h1>
+          <h1>Get started by filling out some basic information!</h1>
+    
+          <div className="container">
+            <div className = "header">
+                <div className = "text">Sign Up</div>
+                <div className = "underline"></div>
+            </div>
 
-            <form>
-                <div>
-                    <label>Username:</label>
-                    <input type="text" id='username'>
-                    </input>
+            <div className = "inputs">
+
+                <div className = "input">
+                    <input type="text" placeholder = "First Name"/>
                 </div>
-                <div>
-                    <label>Password:</label>
-                    <input type="password" id='password'>
-                    </input> 
+
+                <div className = "input">
+                    <input type="text" placeholder = "Age"/>
                 </div>
-            </form>
 
+                <div className = "input">
+                    <input type="text" placeholder = "Weight"/>
+                </div>
 
+                <div className = "input">
+                    <input type="text" placeholder = "Ethnicity"/>
+                </div>
+
+            </div>
+            <div className = "submit-container">
+                <div className = "submit">
+                    <button>Submit</button>
+                </div>
+            </div>
+          </div>
         </>
-    );
+    )
 }
 
 export default Start
