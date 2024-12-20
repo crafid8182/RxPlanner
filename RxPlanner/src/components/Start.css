@@ -65,11 +65,11 @@
 
 .submit {
     display: flex;
-    justify-content: content;
+    justify-content: center;
     align-items: center;
     width: 220px;
     height: 59px;
-    color: #fff;
+    color: #ffffff;
     background-color: blueviolet;
     border-radius: 50px;
     font-weight: 700;
